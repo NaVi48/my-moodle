@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Job Listings</title>
+</head>
+<body>
+    <div class="job-container" id="jobListings">
+        <!-- Job cards will be dynamically inserted here -->
+    </div>
+
+    <script>
+        // Enhanced job data with company logos
+        const jobs = [
+            {
+                companyName: "Tech Innovations Inc.",
+                email: "careers@techinnovations.com",
+                phone: "+1 (555) 123-4567",
+                jobDescription: "Senior Software Engineer - Full Stack Development",
+                companyLogo: "https://imgs.search.brave.com/D9LHPgOZ7RY2edhfnZBrTEp9s_MLPyr61H9vuRPyN98/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMx/MzY0NDI2OS92ZWN0/b3IvZ29sZC1hbmQt/c2lsdmVyLWNpcmNs/ZS1zdGFyLWxvZ28t/dGVtcGxhdGUuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPWhE/cUNJOXFUa05xTmNL/YTZYUzdhQmltN3hL/ejhjWmJubTgwWl94/aVUyREk9" // Placeholder image
+            },
+            {
+                companyName: "Global Solutions Ltd.",
+                email: "jobs@globalsolutions.com",
+                phone: "+1 (555) 987-6543",
+                jobDescription: "Data Scientist - Machine Learning Specialist",
+                companyLogo: "https://imgs.search.brave.com/fwHjZS5miHdu7HeSOTcQcNE4ub3JUSyEvCA9TWafpmc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA5LzcyLzMyLzM5/LzM2MF9GXzk3MjMy/Mzk2MF9DN1BERG96/NFgyMUhqc1FZU0JO/b3ZVSkthWFJMcUg4/dC5qcGc" // Placeholder image
+            },
+            {
+                companyName: "Innovative Tech Corp",
+                email: "careers@innovativetech.com",
+                phone: "+1 (555) 456-7890",
+                jobDescription: "Cloud Architecture Specialist",
+                companyLogo: "https://imgs.search.brave.com/Xl9K1Wsi5vKnFMxChUBfa5GoNTp1sO38hCawdvd6aPs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA2LzA3LzA0Lzk2/LzM2MF9GXzYwNzA0/OTY0N19LcGFobERT/a1htWGhCc3R4aFN2/ajl5MmRxNm53WlJB/NC5qcGc" // Placeholder image
+            }
+        ];
+
+        function displayJobs() {
+            const container = document.getElementById('jobListings');
+            jobs.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.classList.add('job-card');
+                jobCard.innerHTML = `
+                    <img src="${job.companyLogo}" alt="${job.companyName} Logo" class="company-logo">
+                    <h2>${job.companyName}</h2>
+                    <div class="job-details">
+                        <p><strong>Job Description:</strong> ${job.jobDescription}</p>
+                        <div class="contact-info">
+                            <p><strong>Email:</strong> ${job.email}</p>
+                            <p><strong>Phone:</strong> ${job.phone}</p>
+                        </div>
+                        <button class="apply-button" onclick="applyForJob('${job.companyName}')">Apply Now</button>
+                    </div>
+                `;
+                container.appendChild(jobCard);
+            });
+        }
+
+        // Optional: Add an apply function
+        function applyForJob(companyName) {
+            alert(`You are applying to ${companyName}. Redirect to application process.`);
+            // In a real-world scenario, this would link to an application form or email
+        }
+
+        // Call the function when the page loads
+        window.onload = displayJobs;
+    </script>
+</body>
+</html>
