@@ -5,7 +5,7 @@ const jobs = [
         email: "careers@techinnovations.com",
         phone: "+1 (555) 123-4567",
         jobDescription: "Senior Software Engineer - Full Stack Development",
-        companyLogo: "https://via.placeholder.com/150?text=Tech+Innovations"
+        companyLogo: "https://imgs.search.brave.com/PPD6j2k8yZ31g_QjvHxFPRIORX1zppwhYZ6fiLzJb00/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bG9nb2pveS5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTgv/MDUvMzAxNzU1MTQv/MzEwMi03Njh4NTkx/LnBuZw"
     },
     {
         companyName: "Global Solutions Ltd.",
