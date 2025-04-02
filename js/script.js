@@ -12,7 +12,7 @@ const jobs = [
         email: "jobs@globalsolutions.com",
         phone: "+1 (555) 987-6543",
         jobDescription: "Data Scientist - Machine Learning Specialist",
-        companyLogo: "https://via.placeholder.com/150?text=Global+Solutions"
+        companyLogo: "https://imgs.search.brave.com/flG-ELv58N2Izk7zGnaqA2M4FHfNxXrhLXd1vEdLS6M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2xvYmFsdHMuY29t/L2ltYWdlcy9nbG9i/YWwtbGluay1jb21t/dW5pY2F0aW9ucy1o/b21lcGFnZS1sb2dv/LnBuZws"
     },
     {
         companyName: "Innovative Tech Corp",
