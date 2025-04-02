@@ -19,7 +19,7 @@ const jobs = [
         email: "careers@innovativetech.com",
         phone: "+1 (555) 456-7890",
         jobDescription: "Cloud Architecture Specialist",
-        companyLogo: "https://via.placeholder.com/150?text=Innovative+Tech"
+        companyLogo: "https://imgs.search.brave.com/MROBAIODmrKEwcIgpPyzGL9Qlz4cRicSfobW6PFMNOw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvcHJldmll/dy0xeC81MS82Mi9p/bm5vdmF0aW9uLXRl/Y2hub2xvZ3ktY29t/cGFueS1hYnN0cmFj/dC1sb2dvLXZlY3Rv/ci0xOTUzNTE2Mi5q/cGc"
     }
 ];
 
