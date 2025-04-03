@@ -138,3 +138,22 @@ footer {
         width: 100%;
     }
 }
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.back-button {
+    margin-right: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
