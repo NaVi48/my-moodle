@@ -74,5 +74,8 @@ function applyForJob(companyName) {
     // In a real scenario, this would trigger an application process
 }
 
+ function goBack() {
+            window.history.back();
+        }
 // Load jobs when page loads
 document.addEventListener('DOMContentLoaded', displayJobs);
