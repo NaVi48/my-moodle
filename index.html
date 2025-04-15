@@ -5,31 +5,285 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
     <link rel="stylesheet" href="css/styles.css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header">
-        <button onclick="goBack()" class="back-button">Back</button>
-    </div>
-        <h1>Job Opportunities</h1>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Job Listings</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="job-container" id="jobListings">
-            <!-- Job cards will be dynamically inserted here -->
+<!-- Moodle Navbar -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="navbar-brand">
+            <img src="" alt="BAC Logo">
         </div>
-    </main>
+        
+        <div class="navbar-menu">
+            <a href="#">Home</a>
+            <a href="#">Dashboard</a>
+            <a href="#">My courses</a>
+            <a href="#">Job Listings</a>
+        </div>
+    </div>
+    
+    <div class="navbar-right">
+        <div class="navbar-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="navbar-icon">
+            <i class="fas fa-comment"></i>
+        </div>
+        <div class="user-avatar">
+            <img src="/api/placeholder/40/40" alt="User">
+        </div>
+        <i class="fas fa-chevron-down navbar-icon"></i>
+        
+        <div class="edit-mode">
+            Edit mode
+            <label class="toggle-switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</nav>
 
-    <footer>
-        <p>&copy; 2023 Job Listings Platform. All rights reserved.</p>
-    </footer>
+<!-- Main Content -->
+<div class="container">
+    <header class="header">
+        <h1>Career Opportunities</h1>
+        <p>Discover your next career move with our curated job listings</p>
+    </header>
+    
+    <div class="nav-tabs">
+        <a href="#" class="active">All Listings</a>
+        <a href="#">Tech Jobs</a>
+        <a href="#">Data Science</a>
+        <a href="#">Management</a>
+    </div>
+    
+    <div class="job-grid">
+        <!-- Debswana Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="Debswana Logo">
+                <h3>Debswana</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Mining Engineer - Mineral Processing</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 3607217">+267 3607217</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:careers@debswana.bw">careers@debswana.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Jwaneng, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Water Affairs Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="Water Affairs Logo">
+                <h3>Water and Sanitation (Water Affairs)</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Hydrologist - Water Resource Management</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 2415578">+267 2415578</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:wateraffairs@gov.bw">wateraffairs@gov.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Gaborone, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DRTS Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="DRTS Logo">
+                <h3>Department of Road Transport Services</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Transport Officer - Vehicle Inspection</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 5381400">+267 5381400</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:info@drts.gov.bw">info@drts.gov.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Francistown, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tati Land Board Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="Tati Land Board Logo">
+                <h3>Tati Land Board</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Land Surveyor - Land Management</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 2982122">+267 2982122</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:info@tatilandboard.gov.bw">info@tatilandboard.gov.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Francistown, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HRDC Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="HRDC Logo">
+                <h3>Human Resource Development Council (HRDC)</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Skills Development Officer</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 2410558">+267 2410558</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:careers@hrdc.org.bw">careers@hrdc.org.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Gaborone, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NCHINI Computers Job Card -->
+        <div class="job-card">
+            <div class="job-card-header">
+                <img class="company-logo" src="/api/placeholder/100/100" alt="NCHINI Computers Logo">
+                <h3>NCHINI COMPUTERS</h3>
+            </div>
+            <div class="job-card-body">
+                <div class="job-title">Network Administrator - IT Support</div>
+                <div class="job-info">
+                    <div class="job-info-item">
+                        <div class="job-info-label">Phone:</div>
+                        <div class="job-info-value">
+                            <a href="tel:+267 75766704">+267 75766704</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Email:</div>
+                        <div class="job-info-value">
+                            <a href="mailto:jobs@nchinicomputers.co.bw">jobs@nchinicomputers.co.bw</a>
+                        </div>
+                    </div>
+                    <div class="job-info-item">
+                        <div class="job-info-label">Location:</div>
+                        <div class="job-info-value">Gaborone, Botswana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#">Our Mission</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Partnerships</a></li>
+                <li><a href="#">Testimonials</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Job Seekers</h3>
+            <ul>
+                <li><a href="#">Browse Jobs</a></li>
+                <li><a href="#">Career Resources</a></li>
+                <li><a href="#">Resume Tips</a></li>
+                <li><a href="#">Interview Preparation</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Employers</h3>
+            <ul>
+                <li><a href="#">Post a Job</a></li>
+                <li><a href="#">Recruitment Solutions</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Success Stories</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 My Moodle Site. All rights reserved.</p>
+    </div>
+</footer>
 
     <script src="js/script.js"></script>
 </body>
