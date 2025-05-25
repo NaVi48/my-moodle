@@ -1,0 +1,74 @@
+/* Chatbot container */
+.simplechatbot-container {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+/* Messages container */
+.simplechatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Message styling */
+.simplechatbot-message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+/* User message styling */
+.simplechatbot-user-message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+/* Bot message styling */
+.simplechatbot-bot-message {
+    background-color: #f1f0f0;
+    align-self: flex-start;
+}
+
+/* Input container */
+.simplechatbot-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+/* Input field */
+.simplechatbot-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    margin-right: 10px;
+}
+
+/* Send button */
+.simplechatbot-send-btn {
+    padding: 8px 15px;
+    background-color: #0f6fc5;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.simplechatbot-send-btn:hover {
+    background-color: #0d5ca8;
+}
+
