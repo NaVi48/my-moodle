@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>LearnHub - Educational Games</title>
+    
+    <style>
+        /* Basic Styles */
+        :root {
+            --brand-color: #6e8efb;
+            --brand-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 70px;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--brand-color) !important;
+        }
+        
+        .dot {
+            color: #ff6b6b;
+        }
+        
+        .btn-brand {
+            background: var(--brand-gradient);
+            border: none;
+            color: white;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-brand:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-brand {
+            border: 2px solid var(--brand-color);
+            color: var(--brand-color);
+            border-radius: 25px;
+            padding: 6px 18px;
+            background: transparent;
+        }
+        
+        .btn-outline-brand:hover {
+            background: var(--brand-color);
+            color: white;
+        }
+        
+        /* Games Page Styles */
+        .games-header {
+            background: var(--brand-gradient);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(110, 142, 251, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(110, 142, 251, 0.2);
+        }
+
+        .game-thumbnail {
+            height: 200px;
+            background: var(--brand-gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .game-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--brand-color);
+        }
+
+        .game-info {
+            padding: 25px;
+        }
+
+        .game-info h4 {
+            margin-bottom: 12px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .game-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .game-meta i {
+            margin-right: 6px;
+            color: var(--brand-color);
+        }
+
+        /* Break Timer Container (Static) */
+        .break-timer-container {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px 0;
+            border-bottom: 2px solid #e9ecef;
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .break-timer-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .break-timer-controls h5 {
+            margin: 0;
+            color: var(--brand-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-input-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .timer-input-group input {
+            width: 60px;
+            text-align: center;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            color: var(--brand-color);
+        }
+
+        .timer-input-group span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Floating Break Timer */
+        .floating-timer {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(110, 142, 251, 0.3);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            animation: slideIn 0.5s ease-out;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .floating-timer.pulse {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .floating-timer i {
+            font-size: 1.2rem;
+        }
+
+        .timer-time {
+            font-size: 1.1rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .timer-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .timer-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        /* Break Over Modal */
+        .break-over-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .break-over-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            animation: bounceIn 0.6s ease-out;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        @keyframes bounceIn {
+            0% { 
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+            70% { 
+                transform: scale(0.9);
+            }
+            100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .break-over-content h3 {
+            color: var(--brand-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .break-over-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .celebration-icon {
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            80% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Game Modal Styles */
+        .game-modal .modal-content {
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .game-modal .modal-header {
+            background: var(--brand-gradient);
+            color: white;
+            border-bottom: none;
+            padding: 20px 30px;
+        }
+
+        .game-modal .modal-title {
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .game-modal .btn-close {
+            filter: invert(1);
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .intro h6 {
+            color: var(--brand-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .intro h1 {
+            font-weight: bold;
+            margin: 15px 0 20px;
+            color: #333;
+        }
+
+        .intro p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .footer-top {
+            padding: 60px 0 30px;
+        }
+
+        .footer-bottom {
+            background: #34495e;
+            padding: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .break-timer-controls {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .floating-timer {
+                right: 10px;
+                top: 80px;
+                padding: 12px 16px;
+            }
+            
+            .timer-time {
+                font-size: 1rem;
+                min-width: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LearnHub<span class="dot">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#games">Brain Breaks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#jobs">Job Portal</a>
+                    </li>
+                </ul>
+                <button class="btn btn-brand ms-lg-3">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Break Timer Container -->
+    <div class="break-timer-container">
+        <div class="container">
+            <div class="break-timer-controls">
+                <h5>
+                    <i class='bx bx-brain'></i>
+                    Take a Brain Break
+                </h5>
+                <div class="timer-input-group">
+                    <input type="number" id="breakMinutes" min="1" max="60" value="5" class="form-control">
+                    <span>minutes</span>
+                    <button id="startBreak" class="btn btn-brand btn-sm">
+                        <i class='bx bx-play'></i> Start Break
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Timer -->
+    <div class="floating-timer" id="floatingTimer">
+        <i class='bx bx-time-five'></i>
+        <span class="timer-time" id="timerDisplay">05:00</span>
+        <div class="timer-controls">
+            <button class="timer-btn" id="pauseTimer" title="Pause/Resume">
+                <i class='bx bx-pause'></i>
+            </button>
+            <button class="timer-btn" id="cancelTimer" title="Cancel">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- GAMES HEADER -->
+    <section class="games-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Brain Break Games</h1>
+                    <p class="lead">Take a break from learning with these fun, educational games that keep your mind sharp!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAMES SECTION -->
+    <section class="games-section py-5 bg-light" id="games">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro">
+                        <h6>Educational Games</h6>
+                        <h1>Challenge Your Mind</h1>
+                        <p>Research shows that short breaks with mental challenges can improve focus and retention when you return to studying.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Memory Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-brain'></i>
+                            <div class="game-badge">Memory</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Memory Match</h4>
+                            <p>Test your memory by matching pairs of cards. Improve your concentration and recall abilities.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 5-10 min</span>
+                                <span><i class='bx bx-brain'></i> Memory</span>
+                            </div>
+                            <button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#memoryGame">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-question-mark'></i>
+                            <div class="game-badge">Trivia</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Quick Quiz</h4>
+                            <p>Answer random questions from various subjects. Great for testing your general knowledge.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 3-5 min</span>
+                                <span><i class='bx bx-book'></i> Knowledge</span>
+                            </div>
+                            <button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#quizGame">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Typing Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-keyboard'></i>
+                            <div class="game-badge">Speed</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Typing Challenge</h4>
+                            <p>Improve your typing speed and accuracy while learning interesting facts.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 5 min</span>
+                                <span><i class='bx bx-keyboard'></i> Skills</span>
+                            </div>
+                            <button class="btn btn-brand" data-bs-toggle="modal" data-bs-target="#typingGame">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Math Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-calculator'></i>
+                            <div class="game-badge">Math</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Math Blitz</h4>
+                            <p>Solve simple math problems against the clock. Keeps your calculation skills sharp.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 2-5 min</span>
+                                <span><i class='bx bx-calculator'></i> Logic</span>
+                            </div>
+                            <button class="btn btn-brand">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Word Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-font'></i>
+                            <div class="game-badge">Vocabulary</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Word Explorer</h4>
+                            <p>Find as many words as you can from a grid of letters. Expands your vocabulary.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 5-7 min</span>
+                                <span><i class='bx bx-font'></i> Language</span>
+                            </div>
+                            <button class="btn btn-brand">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Puzzle Game -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="game-card">
+                        <div class="game-thumbnail">
+                            <i class='bx bx-puzzle'></i>
+                            <div class="game-badge">Logic</div>
+                        </div>
+                        <div class="game-info">
+                            <h4>Puzzle Break</h4>
+                            <p>Solve sliding puzzles and brain teasers. Great for developing problem-solving skills.</p>
+                            <div class="game-meta">
+                                <span><i class='bx bx-time'></i> 5-10 min</span>
+                                <span><i class='bx bx-puzzle'></i> Problem Solving</span>
+                            </div>
+                            <button class="btn btn-brand">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Game Modal -->
+    <div class="modal fade game-modal" id="memoryGame" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Memory Match Game</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center p-5">
+                        <i class='bx bx-brain' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <h4 class="mt-3">Memory Game Coming Soon!</h4>
+                        <p>This exciting memory challenge game is currently in development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade game-modal" id="quizGame" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Quick Quiz Challenge</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center p-5">
+                        <i class='bx bx-question-mark' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <h4 class="mt-3">Quiz Game Coming Soon!</h4>
+                        <p>Test your knowledge with our comprehensive quiz system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade game-modal" id="typingGame" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Typing Challenge</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center p-5">
+                        <i class='bx bx-keyboard' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <h4 class="mt-3">Typing Game Coming Soon!</h4>
+                        <p>Improve your typing speed and accuracy with fun challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Break Over Modal -->
+    <div class="break-over-modal" id="breakOverModal">
+        <div class="break-over-content">
+            <div class="celebration-icon">
+                <i class='bx bx-party'></i>
+            </div>
+            <h3>Break Time is Over!</h3>
+            <p>Your scheduled break has ended. You've recharged your mind and you're ready to get back to productive learning!</p>
+            <button class="btn btn-brand btn-lg" id="closeBreakModal">
+                <i class='bx bx-check-circle'></i> Back to Work
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-4">
+                        <h4 class="navbar-brand">LearnHub<span class="dot">.</span></h4>
+                        <p>Your gateway to professional development and career advancement through high-quality online education.</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-light">Home</a></li>
+                            <li><a href="#" class="text-light">Courses</a></li>
+                            <li><a href="#" class="text-light">Brain Breaks</a></li>
+                            <li><a href="#" class="text-light">Job Portal</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5>Newsletter</h5>
+                        <p>Subscribe to get updates on new courses and learning resources.</p>
+                        <div class="d-flex">
+                            <input type="email" class="form-control me-2" placeholder="Your email">
+                            <button class="btn btn-brand">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="mb-0">Copyright@2023 LearnHub. All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Break Timer Variables
+            let breakTimer;
+            let timeLeft = 0;
+            let isPaused = false;
+            let totalBreakTime = 0;
+            
+            // DOM Elements
+            const startBreakBtn = document.getElementById('startBreak');
+            const breakMinutesInput = document.getElementById('breakMinutes');
+            const floatingTimer = document.getElementById('floatingTimer');
+            const timerDisplay = document.getElementById('timerDisplay');
+            const pauseBtn = document.getElementById('pauseTimer');
+            const cancelBtn = document.getElementById('cancelTimer');
+            const breakOverModal = document.getElementById('breakOverModal');
+            const closeModalBtn = document.getElementById('closeBreakModal');
+            
+            // Start Break Timer
+            startBreakBtn.addEventListener('click', function() {
+                const minutes = parseInt(breakMinutesInput.value);
+                if (minutes > 0 && minutes <= 60) {
+                    startTimer(minutes * 60);
+                    startBreakBtn.disabled = true;
+                    breakMinutesInput.disabled = true;
+                    floatingTimer.style.display = 'flex';
+                    
+                    // Add entrance animation
+                    setTimeout(() => {
+                        floatingTimer.style.animation = 'slideIn 0.5s ease-out';
+                    }, 100);
+                } else {
+                    alert('Please enter a valid time between 1 and 60 minutes.');
+                }
+            });
+            
+            // Pause/Resume Timer
+            pauseBtn.addEventListener('click', function() {
+                if (isPaused) {
+                    resumeTimer();
+                } else {
+                    pauseTimer();
+                }
+            });
+            
+            // Cancel Timer
+            cancelBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to cancel your break timer?')) {
+                    cancelTimer();
+                }
+            });
+            
+            // Close Break Over Modal
+            closeModalBtn.addEventListener('click', function() {
+                closeBreakOverModal();
+            });
+            
+            // Close modal when clicking outside
+            breakOverModal.addEventListener('click', function(e) {
+                if (e.target === breakOverModal) {
+                    closeBreakOverModal();
+                }
+            });
+            
+            function startTimer(seconds) {
+                timeLeft = seconds;
+                totalBreakTime = seconds;
+                isPaused = false;
+                updateTimerDisplay();
+                
+                clearInterval(breakTimer);
+                breakTimer = setInterval(function() {
+                    if (!isPaused) {
+                        timeLeft--;
+                        updateTimerDisplay();
+                        
+                        // Add pulse effect when time is running low
+                        if (timeLeft <= 60 && timeLeft > 0) {
+                            floatingTimer.classList.add('pulse');
+                        }
+                        
+                        if (timeLeft <= 0) {
+                            clearInterval(breakTimer);
+                            showBreakOverModal();
+                            resetTimer();
+                        }
+                    }
+                }, 1000);
+            }
+            
+            function pauseTimer() {
+                isPaused = true;
+                pauseBtn.innerHTML = '<i class="bx bx-play"></i>';
+                pauseBtn.title = 'Resume';
+                floatingTimer.style.opacity = '0.7';
+            }
+            
+            function resumeTimer() {
+                isPaused = false;
+                pauseBtn.innerHTML = '<i class="bx bx-pause"></i>';
+                pauseBtn.title = 'Pause';
+                floatingTimer.style.opacity = '1';
+            }
+            
+            function cancelTimer

@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Development Course - LearnHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        /* Course page specific styles */
+        .course-header {
+            background-color: #f8f9fa;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        .course-sidebar {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .course-sidebar .nav-link {
+            color: #495057;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        
+        .course-sidebar .nav-link:hover, 
+        .course-sidebar .nav-link.active {
+            background-color: #e9ecef;
+            color: #4e73df;
+        }
+        
+        .course-sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .module-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .module-header {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .module-content {
+            padding: 20px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-item i {
+            margin-right: 15px;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+        
+        .mark-as-done {
+            margin-left: auto;
+        }
+        
+        .teams-btn {
+            background-color: #6264A7;
+            color: white;
+            border: none;
+        }
+        
+        .teams-btn:hover {
+            background-color: #464775;
+            color: white;
+        }
+        
+        .course-progress {
+            margin-bottom: 20px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BOTTOM NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LearnHub<span class="dot">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="games.html">Brain Breaks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Job_portal.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard">My Dashboard</a>
+                    </li>
+                </ul>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-brand ms-lg-3">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- COURSE HEADER -->
+    <div class="course-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="dashboard.html">My Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="courses.html">My Courses</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Web Development</li>
+                        </ol>
+                    </nav>
+                    <h1>Web Development</h1>
+                    <p class="lead mb-0">CSE105 - Web and Multimedia Development | 2023-2024</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <button class="btn btn-teams teams-btn me-2">
+                        <i class='bx bx-video'></i> Create Teams Meeting
+                    </button>
+                    <button class="btn btn-outline-secondary">
+                        <i class='bx bx-cog'></i> Course Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURSE CONTENT -->
+    <div class="container">
+        <div class="row">
+            <!-- SIDEBAR -->
+            <div class="col-lg-3">
+                <div class="course-sidebar mb-4">
+                    <h5 class="mb-3">Course Navigation</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class='bx bxs-dashboard'></i> Course Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-book'></i> Study Guide
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-user'></i> Lecturer Details
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-calendar'></i> Timeline
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-group'></i> Participants
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-bar-chart-alt-2'></i> Grades
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-award'></i> Competencies
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class='bx bxs-chat'></i> Discussions
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="course-sidebar">
+                    <h5 class="mb-3">Upcoming Events</h5>
+                    <div class="event-item mb-3">
+                        <div class="d-flex align-items-center mb-1">
+                            <i class='bx bx-calendar-event me-2'></i>
+                            <strong>Assignment Due</strong>
+                        </div>
+                        <small class="text-muted">WMD Assignment - May 30, 2024</small>
+                    </div>
+                    <div class="event-item mb-3">
+                        <div class="d-flex align-items-center mb-1">
+                            <i class='bx bx-video me-2'></i>
+                            <strong>Live Session</strong>
+                        </div>
+                        <small class="text-muted">HTML5 Deep Dive - June 5, 2024</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MAIN CONTENT -->
+            <div class="col-lg-9">
+                <!-- Course Progress -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="progress-text">
+                            <span>Course Progress</span>
+                            <span>35% Complete</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Welcome Section -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Welcome to Web Development</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>This course covers fundamental and advanced concepts of web development including HTML5, CSS3, JavaScript, and responsive design principles.</p>
+                        <p>You'll find all course materials organized by chapters below. Please complete each section in order and mark them as done when finished.</p>
+                        <button class="btn btn-outline-primary">
+                            <i class='bx bxs-download'></i> Download Study Guide
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Module Discussion Forums -->
+                <div class="module-card">
+                    <div class="module-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Module Discussion Forums</h5>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Collapse all</a>
+                    </div>
+                    <div class="module-content">
+                        <div class="resource-item">
+                            <i class='bx bxs-group'></i>
+                            <div>
+                                <h6 class="mb-0">Group Discussions</h6>
+                                <small class="text-muted">Collaborate with your peers on course topics</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-chat'></i>
+                            <div>
+                                <h6 class="mb-0">Revision Discussion Forum</h6>
+                                <small class="text-muted">Ask questions and get help with course material</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-file'></i>
+                            <div>
+                                <h6 class="mb-0">WMD Assignment</h6>
+                                <small class="text-muted">Web and Multimedia Development assignment</small>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-file'></i>
+                            <div>
+                                <h6 class="mb-0">WMD Assignment 2024 V2</h6>
+                                <small class="text-muted">Updated assignment with new requirements</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 1: HTML5 -->
+                <div class="module-card">
+                    <div class="module-header">
+                        <h5 class="mb-0">Chapter 1: HTML5</h5>
+                    </div>
+                    <div class="module-content">
+                        <div class="resource-item">
+                            <i class='bx bxs-slideshow'></i>
+                            <div>
+                                <h6 class="mb-0">Lecture 1: HTML5 Slides</h6>
+                                <small class="text-muted">Introduction to HTML5 features and semantics</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-slideshow'></i>
+                            <div>
+                                <h6 class="mb-0">Principles of Web Design Lecture Slides</h6>
+                                <small class="text-muted">Key principles for effective web design</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-video'></i>
+                            <div>
+                                <h6 class="mb-0">HTML5 Video Tutorial</h6>
+                                <small class="text-muted">30 minute walkthrough of HTML5 features</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-file'></i>
+                            <div>
+                                <h6 class="mb-0">Chapter 1 Quiz</h6>
+                                <small class="text-muted">Test your knowledge of HTML5 concepts</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chapter 2: Website Design Principles -->
+                <div class="module-card">
+                    <div class="module-header">
+                        <h5 class="mb-0">Chapter 2: Website Design Principles</h5>
+                    </div>
+                    <div class="module-content">
+                        <div class="resource-item">
+                            <i class='bx bxs-slideshow'></i>
+                            <div>
+                                <h6 class="mb-0">Web Design Principles Lecture Slides</h6>
+                                <small class="text-muted">UX/UI principles for modern web design</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success mark-as-done">Mark as done</button>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-file'></i>
+                            <div>
+                                <h6 class="mb-0">Design Assignment</h6>
+                                <small class="text-muted">Apply design principles to a sample website</small>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class='bx bxs-video'></i>
+                            <div>
+                                <h6 class="mb-0">Responsive Design Tutorial</h6>
+                                <small class="text-muted">Creating mobile-friendly websites</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Teams Meeting Modal -->
+                <div class="modal fade" id="teamsModal" tabindex="-1" aria-labelledby="teamsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="teamsModalLabel">Schedule Teams Meeting</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="meetingTitle" class="form-label">Meeting Title</label>
+                                        <input type="text" class="form-control" id="meetingTitle" value="Web Development Class Session">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="meetingDate" class="form-label">Date and Time</label>
+                                        <input type="datetime-local" class="form-control" id="meetingDate">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="meetingDuration" class="form-label">Duration (minutes)</label>
+                                        <select class="form-select" id="meetingDuration">
+                                            <option>30</option>
+                                            <option selected>60</option>
+                                            <option>90</option>
+                                            <option>120</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="meetingDescription" class="form-label">Description</label>
+                                        <textarea class="form-control" id="meetingDescription" rows="3">Weekly class session for Web Development course</textarea>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="recordMeeting" checked>
+                                        <label class="form-check-label" for="recordMeeting">Record meeting automatically</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-teams teams-btn">
+                                    <i class='bx bx-video'></i> Schedule Meeting
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-4">
+                        <h4 class="navbar-brand">LearnHub<span class="dot">.</span></h4>
+                        <p>Your gateway to professional development and career advancement through high-quality online education.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5>Quick Links</h5>
+                        <ul class="p-0">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="courses.html">Courses</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Instructors</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5>Categories</h5>
+                        <ul class="p-0">
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Data Science</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Newsletter</h5>
+                        <p>Subscribe to get updates on new courses and learning resources.</p>
+                        <form class="subscribe-form">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-brand">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="mb-0">Copyright@2023 LearnHub. All rights Reserved</p>
+        </div>
+    </footer>
+
+   <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chatbot.js"></script>
+
+<script>
+    // Teams meeting button functionality
+    document.querySelector('.btn-teams').addEventListener('click', function() {
+        var teamsModal = new bootstrap.Modal(document.getElementById('teamsModal'));
+        teamsModal.show();
+    });
+    
+    // Schedule Meeting button in modal
+    document.querySelector('#teamsModal .btn-teams').addEventListener('click', function() {
+        // Generate a random meeting ID for demo purposes
+        const meetingId = 'm' + Math.random().toString(36).substring(2, 11);
+        const meetingLink = `teams-meeting.html?meeting=${meetingId}`;
+        
+        // Close the modal
+        bootstrap.Modal.getInstance(document.getElementById('teamsModal')).hide();
+        
+        // Show the meeting link to the user
+        const alertHTML = `
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <strong>Meeting scheduled!</strong> 
+                <a href="${meetingLink}" target="_blank" class="alert-link">Join meeting now</a>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+        
+        // Insert the alert after the course progress card
+        document.querySelector('.card.mb-4').insertAdjacentHTML('afterend', alertHTML);
+    });
+    
+    // Mark as done buttons
+    document.querySelectorAll('.mark-as-done').forEach(button => {
+        button.addEventListener('click', function() {
+            this.innerHTML = '<i class="bx bx-check"></i> Done';
+            this.classList.remove('btn-outline-success');
+            this.classList.add('btn-success');
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <link rel="icon" type="image/png" href="img/learn.png">
+    <title>LearnHub - LMS Platform</title>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+    
+
+    <!-- BOTTOM NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LearnHub<span class="dot">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="games.html">Brain Breaks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Job_portal.html">Job Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard">My Dashboard</a>
+                    </li>
+                </ul>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-brand ms-lg-3">Login</a>
+            </div>
+        </div>
+    </nav>
+    <div class="break-reminder fixed-bottom text-end p-3">
+    <button class="btn btn-warning" onclick="location.href='games.html'">
+        <i class='bx bx-coffee'></i> Take a Brain Break
+    </button>
+</div>
+
+    <!-- SLIDER -->
+    <div class="owl-carousel owl-theme hero-slider">
+        <div class="slide slide1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center text-white">
+                        <h6 class="text-white text-uppercase">Learn without limits</h6>
+                        <h1 class="display-3 my-4">Expand your knowledge<br />with our courses</h1>
+                        <a href="#courses" class="btn btn-brand">Browse Courses</a>
+                        <a href="#features" class="btn btn-outline-light ms-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide slide2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-10 offset-lg-1 text-white">
+                        <h6 class="text-white text-uppercase">Professional development</h6>
+                        <h1 class="display-3 my-4">Advance your career <br />with expert instructors</h1>
+                        <a href="#instructors" class="btn btn-brand">Meet Instructors</a>
+                        <a href="#testimonials" class="btn btn-outline-light ms-3">See Success Stories</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURSES -->
+    <section id="courses">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro">
+                        <h6>Courses</h6>
+                        <h1>Popular Learning Programs</h1>
+                        <p class="mx-auto">Choose from hundreds of courses taught by industry experts. Learn at your own pace with our flexible online learning platform.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card">
+                        <img src="img/webdev.png" alt="Web Development">
+                        <div class="course-info">
+                            <div class="course-meta">
+                                <span class="category">Development</span>
+                                <span class="rating"><i class='bx bxs-star'></i> 4.8</span>
+                            </div>
+                            <h5>Complete Web Development Bootcamp</h5>
+                            <p>Master HTML, CSS, JavaScript, React, Node.js and more in this comprehensive course.</p>
+                            <div class="course-footer">
+                                <span class="duration"><i class='bx bx-time'></i> 60 hours</span>
+                                <span class="price">$199</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-brand">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card">
+                        <img src="img/machinln.jpg" alt="Data Science">
+                        <div class="course-info">
+                            <div class="course-meta">
+                                <span class="category">Data Science</span>
+                                <span class="rating"><i class='bx bxs-star'></i> 4.9</span>
+                            </div>
+                            <h5>Data Science & Machine Learning</h5>
+                            <p>Learn Python, Pandas, NumPy, Matplotlib, Scikit-learn and TensorFlow from scratch.</p>
+                            <div class="course-footer">
+                                <span class="duration"><i class='bx bx-time'></i> 80 hours</span>
+                                <span class="price">$249</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-brand">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="course-card">
+                        <img src="img/digitalm.jpg" alt="Digital Marketing">
+                        <div class="course-info">
+                            <div class="course-meta">
+                                <span class="category">Marketing</span>
+                                <span class="rating"><i class='bx bxs-star'></i> 4.7</span>
+                            </div>
+                            <h5>Digital Marketing Masterclass</h5>
+                            <p>SEO, Social Media, PPC, Email Marketing, Analytics and more. Become a marketing expert.</p>
+                            <div class="course-footer">
+                                <span class="duration"><i class='bx bx-time'></i> 45 hours</span>
+                                <span class="price">$179</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-brand">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-brand">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 py-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="info-box">
+                                <img src="img/icon1.png" alt="">
+                                <div class="ms-4">
+                                    <h5>Interactive Learning</h5>
+                                    <p>Engage with interactive content, quizzes, and hands-on projects to reinforce your learning.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <div class="info-box">
+                                <img src="img/icon2.png" alt="">
+                                <div class="ms-4">
+                                    <h5>Expert Instructors</h5>
+                                    <p>Learn from industry professionals with real-world experience in their fields.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <div class="info-box">
+                                <img src="img/icon3.png" alt="">
+                                <div class="ms-4">
+                                    <h5>Flexible Schedule</h5>
+                                    <p>Access courses anytime, anywhere, and learn at your own pace.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="intro">
+                        <h6>Why Choose Us</h6>
+                        <h1>Premium Learning Experience</h1>
+                        <p>Our platform combines cutting-edge technology with proven teaching methods to deliver an exceptional learning experience.</p>
+                        <ul class="feature-list">
+                            <li><i class='bx bx-check'></i> Certificate of completion</li>
+                            <li><i class='bx bx-check'></i> Lifetime access to course materials</li>
+                            <li><i class='bx bx-check'></i> Community support</li>
+                            <li><i class='bx bx-check'></i> Mobile-friendly platform</li>
+                            <li><i class='bx bx-check'></i> Career support services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats">
+        <div class="container">
+            <div class="row text-center justify-content-center gy-4">
+                <div class="col-lg-2 col-sm-6">
+                    <h1 class="display-4">50K+</h1>
+                    <p class="mb-0">Students Enrolled</p>
+                </div>
+                <div class="col-lg-2 col-sm-6">
+                    <h1 class="display-4">200+</h1>
+                    <p class="mb-0">Courses Available</p>
+                </div>
+                <div class="col-lg-2 col-sm-6">
+                    <h1 class="display-4">100+</h1>
+                    <p class="mb-0">Expert Instructors</p>
+                </div>
+                <div class="col-lg-2 col-sm-6">
+                    <h1 class="display-4">95%</h1>
+                    <p class="mb-0">Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTORS -->
+    <section id="instructors">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro">
+                        <h6>Instructors</h6>
+                        <h1>Learn From Industry Experts</h1>
+                        <p class="mx-auto">Our instructors are professionals with years of experience in their respective fields, ready to share their knowledge with you.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-8">
+                    <div class="team-member">
+                        <div class="image">
+                            <img src="img/instructor2.jpg" alt="Dr. Sarah Johnson">
+                            <div class="social-icons">
+                                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                                <a href="#"><i class='bx bxl-twitter'></i></a>
+                                <a href="#"><i class='bx bxl-github'></i></a>
+                            </div>
+                            <div class="overlay"></div>
+                        </div>
+                        <h5>Abigail Dikhuhang</h5>
+                        <p>BIDA module leader</p>
+                        <small>10+ years at BOTSWANA ACCOUNTANCY COLLEGE</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8">
+                    <div class="team-member">
+                        <div class="image">
+                            <img src="img/instructor3.jpg" alt="Michael Chen">
+                            <div class="social-icons">
+                                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                                <a href="#"><i class='bx bxl-twitter'></i></a>
+                                <a href="#"><i class='bx bxl-github'></i></a>
+                            </div>
+                            <div class="overlay"></div>
+                        </div>
+                        <h5>Goratagaone Mabelebele</h5>
+                        <p>Full Stack Developer</p>
+                        <small>Former Lead at Facebook</small>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8">
+                    <div class="team-member">
+                        <div class="image">
+                            <img src="img/instructor4.jpg" alt="Emma Rodriguez">
+                            <div class="social-icons">
+                                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                                <a href="#"><i class='bx bxl-twitter'></i></a>
+                                <a href="#"><i class='bx bxl-instagram'></i></a>
+                            </div>
+                            <div class="overlay"></div>
+                        </div>
+                        <h5>Topo Motsewabathata</h5>
+                        <p>Digital Marketing Expert</p>
+                        <small>Marketing Director at Amazon</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro">
+                        <h6>Testimonials</h6>
+                        <h1>What Our Students Say</h1>
+                        <p class="mx-auto">Hear from our students about their learning experiences and career transformations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-theme owl-carousel reviews-slider">
+                <div class="review">
+                    <div class="person">
+                        <img src="img/instructor5.jpg" alt="Kutlwano Mangwala Jnr">
+                        <h5>Kutlwano Mangwala Jnr</h5>
+                        <small>Web Developer at TechCorp</small>
+                    </div>
+                    <h3>"The web development bootcamp completely changed my career trajectory. Within 6 months of completing the course, I landed my dream job as a front-end developer. The hands-on projects were invaluable."</h3>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <i class='bx bxs-quote-alt-left'></i>
+                </div>
+                <div class="review">
+                    <div class="person">
+                        <img src="img/team_2.jpg" alt="Priya Patel">
+                        <h5>Priya Patel</h5>
+                        <small>Data Analyst at DataInsights</small>
+                    </div>
+                    <h3>"As someone with no prior coding experience, the Data Science course was challenging but incredibly rewarding. The instructors break down complex concepts into digestible lessons. Highly recommend!"</h3>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <i class='bx bxs-quote-alt-left'></i>
+                </div>
+                <div class="review">
+                    <div class="person">
+                        <img src="img/team_3.jpg" alt="James Wilson">
+                        <h5>James Wilson</h5>
+                        <small>Marketing Manager at BrandUp</small>
+                    </div>
+                    <h3>"The digital marketing course provided practical strategies I could implement immediately in my business. The community and instructor support made all the difference in my learning journey."</h3>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <i class='bx bxs-quote-alt-left'></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro">
+                        <h6>Blog</h6>
+                        <h1>Latest Learning Insights</h1>
+                        <p class="mx-auto">Stay updated with the latest trends, tips, and news in online education and professional development.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <article class="blog-post">
+                        <img src="img/Insights1.jpg" alt="Future of Online Education">
+                        <a href="#" class="tag">Online Learning</a>
+                        <div class="content">
+                            <small>15 June, 2023</small>
+                            <h5>The Future of Online Education: Trends to Watch</h5>
+                            <p>Explore how emerging technologies like AI and VR are transforming the online learning landscape and what it means for students.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="blog-post">
+                        <img src="img/change.png" alt="Career Transition">
+                        <a href="#" class="tag">Career Growth</a>
+                        <div class="content">
+                            <small>02 June, 2023</small>
+                            <h5>How to Successfully Transition to a Tech Career</h5>
+                            <p>Practical advice from professionals who made the switch to tech careers later in life and how online courses helped them succeed.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="blog-post">
+                        <img src="img/learning-strategies.png" alt="Learning Strategies">
+                        <a href="#" class="tag">Learning Tips</a>
+                        <div class="content">
+                            <small>25 May, 2023</small>
+                            <h5>Effective Learning Strategies for Online Students</h5>
+                            <p>Science-backed techniques to maximize your learning efficiency and retention when taking online courses.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 bg-brand">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white">Ready to Start Learning?</h2>
+                    <p class="text-white my-4">Join thousands of students advancing their careers with our courses. No prior experience required.</p>
+                    <a href="#" class="btn btn-light">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-4">
+                        <h4 class="navbar-brand">LearnHub<span class="dot">.</span></h4>
+                        <p>Your gateway to professional development and career advancement through high-quality online education.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5>Quick Links</h5>
+                        <ul class="p-0">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#courses">Courses</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#instructors">Instructors</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <h5>Categories</h5>
+                        <ul class="p-0">
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Data Science</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Newsletter</h5>
+                        <p>Subscribe to get updates on new courses and learning resources.</p>
+                        <form class="subscribe-form">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-brand">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p class="mb-0">Copyright@2023 LearnHub. All rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-brand w-100">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</a></p>
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Create an Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="registerEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword">
+                        </div>
+                        <button type="submit" class="btn btn-brand w-100">Register</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>

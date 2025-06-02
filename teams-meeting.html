@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Classroom - LearnHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --primary-color: #6264A7;
+            --secondary-color: #464775;
+            --danger-color: #D83B01;
+            --success-color: #498205;
+            --bg-color: #f8f9fa;
+        }
+        
+        body {
+            background-color: #252423;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .meeting-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .meeting-header {
+            padding: 10px 20px;
+            background-color: #1b1a19;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3b3a39;
+        }
+        
+        .meeting-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .participants-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .participant-card {
+            background-color: #2d2c2c;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .participant-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .participant-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .participant-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .participant-name {
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+        
+        .participant-status {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 8px;
+        }
+        
+        .status-icon {
+            font-size: 0.8rem;
+        }
+        
+        .controls-bar {
+            background-color: #1b1a19;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-top: 1px solid #3b3a39;
+        }
+        
+        .control-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #3b3a39;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .control-btn:hover {
+            background-color: #464775;
+        }
+        
+        .control-btn.active {
+            background-color: var(--primary-color);
+        }
+        
+        .control-btn.end-call {
+            background-color: var(--danger-color);
+        }
+        
+        .control-btn.end-call:hover {
+            background-color: #b23201;
+        }
+        
+        .control-btn .icon {
+            font-size: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .participants-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .control-btn {
+                width: 42px;
+                height: 42px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .participants-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, 1fr);
+            }
+            
+            .controls-bar {
+                gap: 8px;
+                padding: 10px;
+            }
+            
+            .control-btn {
+                width: 38px;
+                height: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="meeting-container">
+        <div class="meeting-header">
+            <h2 class="meeting-title">Web Development Class</h2>
+            <div class="participant-count">
+                <i class='bx bx-group'></i> <span id="participant-count">9</span>
+            </div>
+        </div>
+        
+        <div class="participants-grid" id="participants-grid">
+            <!-- 3x3 grid of participants will be added here -->
+        </div>
+        
+        <div class="controls-bar">
+            <button class="control-btn mic active" title="Mute">
+                <i class='bx bx-microphone icon'></i>
+            </button>
+            <button class="control-btn video active" title="Stop Video">
+                <i class='bx bx-video icon'></i>
+            </button>
+            <button class="control-btn end-call" title="Leave Call" id="end-call-btn">
+                <i class='bx bx-phone-call icon'></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Sample participants data (9 participants for 3x3 grid)
+            const participants = [
+                { id: 1, name: "Prof. Smith", role: "teacher", video: true, audio: true },
+                { id: 2, name: "Alice Johnson", role: "student", video: true, audio: false },
+                { id: 3, name: "Bob Williams", role: "student", video: true, audio: true },
+                { id: 4, name: "Charlie Brown", role: "student", video: false, audio: true },
+                { id: 5, name: "Diana Miller", role: "student", video: true, audio: false },
+                { id: 6, name: "Ethan Davis", role: "student", video: true, audio: true },
+                { id: 7, name: "Fiona Wilson", role: "student", video: false, audio: false },
+                { id: 8, name: "George Moore", role: "student", video: true, audio: true },
+                { id: 9, name: "You", role: "student", video: true, audio: true }
+            ];
+            
+            // Render participants in 3x3 grid
+            function renderParticipants() {
+                const grid = $('#participants-grid');
+                grid.empty();
+                
+                participants.forEach(participant => {
+                    const card = $(`
+                        <div class="participant-card" data-id="${participant.id}">
+                            ${participant.video ? 
+                                `<video class="participant-video" ${participant.id === 9 ? 'muted' : ''} autoplay></video>` : 
+                                `<div class="participant-avatar" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background-color:#${Math.floor(Math.random()*16777215).toString(16)}">
+                                    ${participant.name.split(' ').map(n => n[0]).join('')}
+                                </div>`
+                            }
+                            <div class="participant-info">
+                                ${participant.role === 'teacher' ? '<i class="bx bxs-graduation"></i>' : ''}
+                                <span class="participant-name">${participant.name}</span>
+                                <div class="participant-status">
+                                    ${!participant.video ? '<i class="bx bxs-video-off status-icon"></i>' : ''}
+                                    ${!participant.audio ? '<i class="bx bxs-microphone-off status-icon"></i>' : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                    
+                    grid.append(card);
+                    
+                    // For the current user (You), get webcam feed
+                    if (participant.id === 9) {
+                        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                            .then(stream => {
+                                card.find('video')[0].srcObject = stream;
+                            })
+                            .catch(err => {
+                                console.error("Error accessing media devices:", err);
+                                card.find('.participant-video').replaceWith(`
+                                    <div class="participant-avatar" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background-color:#${Math.floor(Math.random()*16777215).toString(16)}">
+                                        ${participant.name.split(' ').map(n => n[0]).join('')}
+                                    </div>
+                                `);
+                            });
+                    }
+                });
+            }
+            
+            // Initialize participants
+            renderParticipants();
+            
+            // Toggle mic/video buttons
+            $('.control-btn.mic').click(function() {
+                $(this).toggleClass('active');
+                // Here you would actually toggle the mic in a real app
+            });
+            
+            $('.control-btn.video').click(function() {
+                $(this).toggleClass('active');
+                // Here you would actually toggle the video in a real app
+            });
+            
+            // End call button - returns to courses_in.html
+            $('#end-call-btn').click(function() {
+                if (confirm('Are you sure you want to leave the meeting?')) {
+                    // Stop all media streams
+                    $('video').each(function() {
+                        if (this.srcObject) {
+                            this.srcObject.getTracks().forEach(track => track.stop());
+                        }
+                    });
+                    window.location.href = 'courses_in.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
