@@ -115,7 +115,7 @@
                 if (isChatOpen) {
                     chatbotInput.focus();
                     if (chatbotMessages.children.length === 0) {
-                        addMessage("Hello! I'm the LearnHub Moodle navigation assistant. How can I help you today?", 'bot');
+                        addMessage("Hello! I'm LearnHub assistant. How can I help you today?", 'bot');
                     }
                 }
             });
