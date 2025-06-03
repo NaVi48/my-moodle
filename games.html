@@ -9,89 +9,144 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/learn.png">
     <title>LearnHub - Educational Games</title>
     
     <style>
-        /* Basic Styles */
         :root {
-            --brand-color: #6e8efb;
-            --brand-gradient: linear-gradient(135deg, #6e8efb, #a777e3);
+            --brand: #69ccf0;
+            --dark: #092032;
+            --body: #516171;
+            --border: rgba(0,0,0,0.08);
+            --shadow: 0px 6px 30px rgba(0, 0, 0, 0.08);
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Barlow", sans-serif;
+            color: var(--body);
+            line-height: 1.7;
             padding-top: 70px;
         }
         
+        h1,h2,h3,h4,h5,h6,
+        .display-1,.display-2,.display-3,.display-4 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .text-brand {
+            color: var(--brand) !important;
+        }
+        
+        /* Navbar */
         .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
         
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: var(--brand-color) !important;
+            font-size: 28px;
+            font-weight: 700;
         }
         
-        .dot {
-            color: #ff6b6b;
+        .navbar-brand .dot {
+            color: var(--brand);
+        }
+        
+        .navbar .navbar-nav .nav-link {
+            color: var(--dark);
+        }
+        
+        .navbar .navbar-nav .nav-link:hover {
+            color: var(--brand);
+        }
+        
+        .navbar .navbar-nav .nav-link.active {
+            color: var(--brand);
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 8px 26px;
         }
         
         .btn-brand {
-            background: var(--brand-gradient);
-            border: none;
-            color: white;
+            border-color: var(--brand);
+            background-color: var(--brand);
+            color: #fff;
             border-radius: 25px;
-            padding: 8px 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
         }
         
         .btn-brand:hover {
+            background-color: #4fb8e4;
+            border-color: #4fb8e4;
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
-            color: white;
+            box-shadow: 0 5px 15px rgba(105, 204, 240, 0.4);
         }
         
         .btn-outline-brand {
-            border: 2px solid var(--brand-color);
-            color: var(--brand-color);
+            border: 2px solid var(--brand);
+            color: var(--brand);
             border-radius: 25px;
             padding: 6px 18px;
             background: transparent;
         }
         
         .btn-outline-brand:hover {
-            background: var(--brand-color);
+            background: var(--brand);
             color: white;
         }
         
-        /* Games Page Styles */
-        .games-header {
-            background: var(--brand-gradient);
-            color: white;
-            padding: 4rem 0;
+        /* Intro Section */
+        .intro {
+            margin-bottom: 36px;
+            text-align: center;
         }
-
+        
+        .intro p {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .intro h6 {
+            color: var(--brand);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+        
+        /* Games Header */
+        .games-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            color: white;
+        }
+        
+        .games-header h1 {
+            color: white;
+        }
+        
+        /* Game Cards */
         .game-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             height: 100%;
-            border: 1px solid rgba(110, 142, 251, 0.1);
+            border: 1px solid rgba(105, 204, 240, 0.1);
         }
-
+        
         .game-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(110, 142, 251, 0.2);
+            box-shadow: 0 15px 35px rgba(105, 204, 240, 0.2);
         }
-
+        
         .game-thumbnail {
             height: 200px;
-            background: var(--brand-gradient);
+            background: linear-gradient(135deg, #69ccf0, #4fb8e4);
             position: relative;
             display: flex;
             align-items: center;
@@ -99,7 +154,7 @@
             font-size: 3rem;
             color: white;
         }
-
+        
         .game-badge {
             position: absolute;
             top: 15px;
@@ -109,26 +164,26 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
-            color: var(--brand-color);
+            color: var(--brand);
         }
-
+        
         .game-info {
             padding: 25px;
         }
-
+        
         .game-info h4 {
             margin-bottom: 12px;
-            color: #333;
+            color: var(--dark);
             font-weight: 600;
         }
-
+        
         .game-info p {
-            color: #666;
+            color: var(--body);
             font-size: 14px;
             margin-bottom: 20px;
             line-height: 1.6;
         }
-
+        
         .game-meta {
             display: flex;
             justify-content: space-between;
@@ -136,13 +191,53 @@
             font-size: 13px;
             color: #888;
         }
-
+        
         .game-meta i {
             margin-right: 6px;
-            color: var(--brand-color);
+            color: var(--brand);
         }
-
-        /* Break Timer Container (Static) */
+        
+        /* Timer Display */
+        #timer-display-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .timer-display {
+            font-size: 6rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 2rem;
+        }
+        
+        #timer-controls {
+            margin-bottom: 2rem;
+        }
+        
+        #timer-controls .btn {
+            margin: 0 10px;
+            padding: 10px 25px;
+            font-size: 1.2rem;
+        }
+        
+        #exit-btn {
+            position: absolute;
+            bottom: 30px;
+            padding: 10px 30px;
+        }
+        
+        /* Break Timer Container */
         .break-timer-container {
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             padding: 20px 0;
@@ -152,7 +247,7 @@
             z-index: 999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
+        
         .break-timer-controls {
             display: flex;
             align-items: center;
@@ -160,16 +255,16 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-
+        
         .break-timer-controls h5 {
             margin: 0;
-            color: var(--brand-color);
+            color: var(--brand);
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-
+        
         .timer-input-group {
             display: flex;
             align-items: center;
@@ -177,98 +272,23 @@
             background: white;
             padding: 8px 15px;
             border-radius: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
         }
-
+        
         .timer-input-group input {
             width: 60px;
             text-align: center;
             border: none;
             outline: none;
             font-weight: bold;
-            color: var(--brand-color);
+            color: var(--brand);
         }
-
+        
         .timer-input-group span {
             font-size: 14px;
             color: #666;
         }
-
-        /* Floating Break Timer */
-        .floating-timer {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(110, 142, 251, 0.3);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            font-weight: bold;
-            animation: slideIn 0.5s ease-out;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .floating-timer.pulse {
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .floating-timer i {
-            font-size: 1.2rem;
-        }
-
-        .timer-time {
-            font-size: 1.1rem;
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .timer-controls {
-            display: flex;
-            gap: 8px;
-        }
-
-        .timer-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .timer-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.1);
-        }
-
+        
         /* Break Over Modal */
         .break-over-modal {
             display: none;
@@ -283,7 +303,7 @@
             align-items: center;
             backdrop-filter: blur(5px);
         }
-
+        
         .break-over-content {
             background: white;
             padding: 40px;
@@ -294,7 +314,7 @@
             animation: bounceIn 0.6s ease-out;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-
+        
         @keyframes bounceIn {
             0% { 
                 transform: scale(0.3);
@@ -311,28 +331,28 @@
                 opacity: 1;
             }
         }
-
+        
         .break-over-content h3 {
-            color: var(--brand-color);
+            color: var(--brand);
             margin-bottom: 20px;
             font-size: 2rem;
             font-weight: bold;
         }
-
+        
         .break-over-content p {
             margin-bottom: 30px;
             font-size: 1.1rem;
-            color: #666;
+            color: var(--body);
             line-height: 1.6;
         }
-
+        
         .celebration-icon {
             font-size: 4rem;
-            color: #ff6b6b;
+            color: var(--brand);
             margin-bottom: 20px;
             animation: bounce 2s infinite;
         }
-
+        
         @keyframes bounce {
             0%, 20%, 60%, 100% {
                 transform: translateY(0);
@@ -344,7 +364,7 @@
                 transform: translateY(-10px);
             }
         }
-
+        
         /* Game Modal Styles */
         .game-modal .modal-content {
             border-radius: 20px;
@@ -352,64 +372,56 @@
             border: none;
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
-
+        
         .game-modal .modal-header {
-            background: var(--brand-gradient);
+            background: linear-gradient(135deg, #69ccf0, #4fb8e4);
             color: white;
             border-bottom: none;
             padding: 20px 30px;
         }
-
+        
         .game-modal .modal-title {
             font-weight: bold;
             font-size: 1.3rem;
         }
-
+        
         .game-modal .btn-close {
             filter: invert(1);
         }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .intro h6 {
-            color: var(--brand-color);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .intro h1 {
-            font-weight: bold;
-            margin: 15px 0 20px;
-            color: #333;
-        }
-
-        .intro p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
+        
         /* Footer */
         footer {
-            background: #2c3e50;
-            color: white;
+            background: linear-gradient(0deg, rgba(8, 32, 50, 0.9), rgba(8, 32, 50, 0.9)), url(https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+            background-size: cover;
+            background-position: center;
             margin-top: 60px;
         }
-
+        
         .footer-top {
             padding: 60px 0 30px;
         }
-
+        
         .footer-bottom {
-            background: #34495e;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 20px 0;
         }
-
+        
+        footer .navbar-brand {
+            color: #fff;
+        }
+        
+        footer p {
+            color: #ADB3B9;
+        }
+        
+        footer .social-icons a {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .break-timer-controls {
@@ -417,15 +429,8 @@
                 text-align: center;
             }
             
-            .floating-timer {
-                right: 10px;
-                top: 80px;
-                padding: 12px 16px;
-            }
-            
-            .timer-time {
-                font-size: 1rem;
-                min-width: 50px;
+            .timer-display {
+                font-size: 4rem;
             }
         }
     </style>
@@ -443,16 +448,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#courses">Courses</a>
+                        <a class="nav-link" href="courses.html">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#games">Brain Breaks</a>
+                        <a class="nav-link active" href="games.html">Brain Breaks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#jobs">Job Portal</a>
+                        <a class="nav-link" href="Job_portal.html">Job Portal</a>
                     </li>
                 </ul>
                 <button class="btn btn-brand ms-lg-3">Login</button>
@@ -479,18 +484,17 @@
         </div>
     </div>
 
-    <!-- Floating Timer -->
-    <div class="floating-timer" id="floatingTimer">
-        <i class='bx bx-time-five'></i>
-        <span class="timer-time" id="timerDisplay">05:00</span>
-        <div class="timer-controls">
-            <button class="timer-btn" id="pauseTimer" title="Pause/Resume">
-                <i class='bx bx-pause'></i>
-            </button>
-            <button class="timer-btn" id="cancelTimer" title="Cancel">
-                <i class='bx bx-x'></i>
-            </button>
+    <!-- Timer Display -->
+    <div id="timer-display-wrapper" style="display:none;">
+        <div id="timer-display" class="timer-display" data-remaining-time="false">
+        00:00:00
         </div>
+
+        <div id="timer-controls">
+            <a href="?" class="btn btn-default">Cancel</a>
+            <button class="btn btn-default" id="timer-pause-toggler">Pause</button>
+        </div>
+        <a href="?" id="exit-btn" class="btn btn-default" style="display:none;">Exit</a>
     </div>
 
     <!-- GAMES HEADER -->
@@ -646,7 +650,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center p-5">
-                        <i class='bx bx-brain' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <i class='bx bx-brain' style="font-size: 4rem; color: var(--brand);"></i>
                         <h4 class="mt-3">Memory Game Coming Soon!</h4>
                         <p>This exciting memory challenge game is currently in development.</p>
                     </div>
@@ -664,7 +668,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center p-5">
-                        <i class='bx bx-question-mark' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <i class='bx bx-question-mark' style="font-size: 4rem; color: var(--brand);"></i>
                         <h4 class="mt-3">Quiz Game Coming Soon!</h4>
                         <p>Test your knowledge with our comprehensive quiz system.</p>
                     </div>
@@ -682,7 +686,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="text-center p-5">
-                        <i class='bx bx-keyboard' style="font-size: 4rem; color: var(--brand-color);"></i>
+                        <i class='bx bx-keyboard' style="font-size: 4rem; color: var(--brand);"></i>
                         <h4 class="mt-3">Typing Game Coming Soon!</h4>
                         <p>Improve your typing speed and accuracy with fun challenges.</p>
                     </div>
@@ -717,10 +721,10 @@
                     <div class="col-lg-2">
                         <h5>Quick Links</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-light">Home</a></li>
-                            <li><a href="#" class="text-light">Courses</a></li>
-                            <li><a href="#" class="text-light">Brain Breaks</a></li>
-                            <li><a href="#" class="text-light">Job Portal</a></li>
+                            <li><a href="index.html" class="text-light">Home</a></li>
+                            <li><a href="courses.html" class="text-light">Courses</a></li>
+                            <li><a href="games.html" class="text-light">Brain Breaks</a></li>
+                            <li><a href="Job_portal.html" class="text-light">Job Portal</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
@@ -745,19 +749,20 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Break Timer Variables
-            let breakTimer;
-            let timeLeft = 0;
+            // Timer Variables
+            let timer;
             let isPaused = false;
-            let totalBreakTime = 0;
+            let totalSeconds = 0;
+            let remainingSeconds = 0;
             
             // DOM Elements
             const startBreakBtn = document.getElementById('startBreak');
             const breakMinutesInput = document.getElementById('breakMinutes');
-            const floatingTimer = document.getElementById('floatingTimer');
-            const timerDisplay = document.getElementById('timerDisplay');
-            const pauseBtn = document.getElementById('pauseTimer');
-            const cancelBtn = document.getElementById('cancelTimer');
+            const timerDisplayWrapper = document.getElementById('timer-display-wrapper');
+            const timerDisplay = document.getElementById('timer-display');
+            const pauseBtn = document.getElementById('timer-pause-toggler');
+            const cancelBtn = document.querySelector('#timer-controls a');
+            const exitBtn = document.getElementById('exit-btn');
             const breakOverModal = document.getElementById('breakOverModal');
             const closeModalBtn = document.getElementById('closeBreakModal');
             
@@ -766,14 +771,8 @@
                 const minutes = parseInt(breakMinutesInput.value);
                 if (minutes > 0 && minutes <= 60) {
                     startTimer(minutes * 60);
-                    startBreakBtn.disabled = true;
-                    breakMinutesInput.disabled = true;
-                    floatingTimer.style.display = 'flex';
-                    
-                    // Add entrance animation
-                    setTimeout(() => {
-                        floatingTimer.style.animation = 'slideIn 0.5s ease-out';
-                    }, 100);
+                    timerDisplayWrapper.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
                 } else {
                     alert('Please enter a valid time between 1 and 60 minutes.');
                 }
@@ -789,10 +788,17 @@
             });
             
             // Cancel Timer
-            cancelBtn.addEventListener('click', function() {
+            cancelBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 if (confirm('Are you sure you want to cancel your break timer?')) {
                     cancelTimer();
                 }
+            });
+            
+            // Exit Timer (same as cancel for now)
+            exitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                cancelTimer();
             });
             
             // Close Break Over Modal
@@ -808,24 +814,19 @@
             });
             
             function startTimer(seconds) {
-                timeLeft = seconds;
-                totalBreakTime = seconds;
+                totalSeconds = seconds;
+                remainingSeconds = seconds;
                 isPaused = false;
                 updateTimerDisplay();
                 
-                clearInterval(breakTimer);
-                breakTimer = setInterval(function() {
+                clearInterval(timer);
+                timer = setInterval(function() {
                     if (!isPaused) {
-                        timeLeft--;
+                        remainingSeconds--;
                         updateTimerDisplay();
                         
-                        // Add pulse effect when time is running low
-                        if (timeLeft <= 60 && timeLeft > 0) {
-                            floatingTimer.classList.add('pulse');
-                        }
-                        
-                        if (timeLeft <= 0) {
-                            clearInterval(breakTimer);
+                        if (remainingSeconds <= 0) {
+                            clearInterval(timer);
                             showBreakOverModal();
                             resetTimer();
                         }
@@ -835,16 +836,56 @@
             
             function pauseTimer() {
                 isPaused = true;
-                pauseBtn.innerHTML = '<i class="bx bx-play"></i>';
-                pauseBtn.title = 'Resume';
-                floatingTimer.style.opacity = '0.7';
+                pauseBtn.textContent = 'Resume';
             }
             
             function resumeTimer() {
                 isPaused = false;
-                pauseBtn.innerHTML = '<i class="bx bx-pause"></i>';
-                pauseBtn.title = 'Pause';
-                floatingTimer.style.opacity = '1';
+                pauseBtn.textContent = 'Pause';
             }
             
-            function cancelTimer
+            function cancelTimer() {
+                clearInterval(timer);
+                resetTimer();
+                timerDisplayWrapper.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            function resetTimer() {
+                isPaused = false;
+                remainingSeconds = 0;
+                pauseBtn.textContent = 'Pause';
+            }
+            
+            function updateTimerDisplay() {
+                const hours = Math.floor(remainingSeconds / 3600);
+                const minutes = Math.floor((remainingSeconds % 3600) / 60);
+                const seconds = remainingSeconds % 60;
+                
+                const display = 
+                    (hours < 10 ? '0' + hours : hours) + ':' +
+                    (minutes < 10 ? '0' + minutes : minutes) + ':' +
+                    (seconds < 10 ? '0' + seconds : seconds);
+                
+                timerDisplay.textContent = display;
+            }
+            
+            function showBreakOverModal() {
+                breakOverModal.style.display = 'flex';
+                // Trigger confetti celebration
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+            
+            function closeBreakOverModal() {
+                breakOverModal.style.display = 'none';
+                timerDisplayWrapper.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
